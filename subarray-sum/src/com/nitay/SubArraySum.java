@@ -13,9 +13,13 @@ public class SubArraySum {
         int count = 0;
         for (int i=0; i< arr.length; i++) {
             int sum=0;
-            for (int j= i; j < arr.length; j++) {
+            for (int j=i; j < arr.length; j++) {
+                System.out.print("i is: " + i);
+                System.out.print(", j is: " + j + "=>" + arr[j]);
                 sum+=arr[j];
+                System.out.println("sum is: "+sum);
                 if (sum == 0)
+                    System.out.println("COUNT!");
                     count++;
             }
         }
