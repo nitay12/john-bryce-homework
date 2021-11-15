@@ -1,25 +1,30 @@
 package com.nitay;
 
 public class LiqueurStore {
-    public LiqueurStore(String ownerName, String[] availableDrinks) {
+    public LiqueurStore(String ownerName, Drink[] availableDrinks) {
         this.ownerName = ownerName;
         this.availableDrinks = availableDrinks;
         this.cashInRegister = 0;
     }
 
     private String ownerName;
-    private String[] availableDrinks;
+    private Drink[] availableDrinks;
     private float cashInRegister;
 
-    public void purchaseDrink(String drinkName,float amountOfMoney) {
-        for(int i=0;i<availableDrinks.length;i++){
-            if(drinkName.equals(availableDrinks[i])){
-                System.out.println(availableDrinks[i]+" purchased!");
-                    availableDrinks[i] = availableDrinks[i]+"-OUT OF STOCK!";
-                    setCashInRegister(cashInRegister+amountOfMoney);
+    public void purchaseDrink(Drink drink) {
+        if (drink.getAmount()<=0){
+            System.out.println(drink.toString()+" is out of stock");
+        }
+        else {
+            for (int i = 0; i < availableDrinks.length; i++) {
+                if (drink == availableDrinks[i]) {
+                    System.out.println(availableDrinks[i].toString() + " purchased!");
+                    availableDrinks[i].decreaseOne();
+                    setCashInRegister(cashInRegister + drink.getPrice());
                     return;
+                }
             }
-            System.out.println(drinkName+" is not available");
+            System.out.println(drink.toString() + " is not available");
             printDrinks();
             return;
         }
@@ -27,7 +32,7 @@ public class LiqueurStore {
     public void printDrinks(){
         System.out.println("\nAVAILABLE DRINKS:");
         for(int i=0;i<availableDrinks.length;i++){
-            System.out.println(availableDrinks[i]);
+            System.out.println(availableDrinks[i].toString()+": "+availableDrinks[i].getAmount());
         }
     }
 
