@@ -11,17 +11,22 @@ public class LiqueurStore {
     private Drink[] availableDrinks;
     private float cashInRegister;
 
-    public void purchaseDrink(Drink drink) {
+    public void purchaseDrink(Drink drink, float amountOfMoney) {
         if (drink.getAmount()<=0){
             System.out.println(drink.toString()+" is out of stock");
         }
         else {
             for (int i = 0; i < availableDrinks.length; i++) {
                 if (drink == availableDrinks[i]) {
+                    if(amountOfMoney>=drink.getPrice()){
                     System.out.println(availableDrinks[i].toString() + " purchased!");
                     availableDrinks[i].decreaseOne();
                     setCashInRegister(cashInRegister + drink.getPrice());
                     return;
+                    }
+                    else{
+                        System.out.println("Not enough money! you payed "+amountOfMoney+", "+drink.toString()+" price is "+drink.getPrice());
+                    }
                 }
             }
             System.out.println(drink.toString() + " is not available");

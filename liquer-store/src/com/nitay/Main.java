@@ -9,13 +9,10 @@ public class Main {
         static final Drink[] drinks =new Drink[]{vodka,rum,whiskey,gin,tequila};
         static LiqueurStore myBar = new LiqueurStore("Nitay", drinks);
     public static void main(String[] args) {
-        myBar.purchaseDrink(vodka);
-        myBar.purchaseDrink(vodka);
-        myBar.purchaseDrink(vodka);
-        myBar.purchaseDrink(vodka);
-        myBar.purchaseDrink(vodka);
-        myBar.purchaseDrink(vodka);
-        myBar.purchaseDrink(gin);
+        myBar.purchaseDrink(vodka,12);
+        myBar.purchaseDrink(vodka,14);
+        myBar.purchaseDrink(vodka,1);
+        myBar.purchaseDrink(gin,100);
         myBar.printDrinks();
         System.out.println(myBar.getCashInRegister());
     }
