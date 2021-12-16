@@ -1,4 +1,4 @@
-package nitay;
+package nitay.ransomnote;
 import java.util.List;
 
 public class RansomNote {
